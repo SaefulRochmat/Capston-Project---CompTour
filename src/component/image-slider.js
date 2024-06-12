@@ -22,8 +22,8 @@ class Slider extends HTMLElement {
           class="slider-single-image relative left-0 top-0 w-[50%] mx-auto h-auto shadow-lg transition-transform duration-[500ms] transform scale-0 opacity-0 rounded-3xl"
           src="https://picsum.photos/id/973/200/300"
           alt="1" />
-        <div class="slider-single-title mx-auto">
-                <div class="grid items-center grid-cols-1 gap-6 sm:grid-cols-2 ">
+          <div class="slider-single-title mx-auto">
+                <div class="grid items-center grid-cols-1 gap-6 sm:grid-cols-2 mt-5">
                   <div class="mb-3 text-end">
                     <h1 class="text-[#043420] text-2xl font-bold pr-6" id="regency">Kabupaten</h1>
                     <h1 class="text-[#FA2D00] text-2xl font-bold pr-6" id="TouristAttraction">Nama tempat wisata</h1>
@@ -45,7 +45,7 @@ class Slider extends HTMLElement {
             src="https://picsum.photos/id/974/200/300"
             alt="2" />
                <div class="slider-single-title mx-auto">
-                <div class="grid items-center grid-cols-1 gap-6 sm:grid-cols-2 ">
+                <div class="grid items-center grid-cols-1 gap-6 sm:grid-cols-2 mt-5">
                   <div class="mb-3 text-end">
                     <h1 class="text-[#043420] text-2xl font-bold pr-6" id="regency">Kabupaten</h1>
                     <h1 class="text-[#FA2D00] text-2xl font-bold pr-6" id="TouristAttraction">Nama tempat wisata</h1>
@@ -67,7 +67,29 @@ class Slider extends HTMLElement {
             src="https://picsum.photos/id/975/200/300"
             alt="3" />
           <div class="slider-single-title mx-auto">
-                <div class="grid items-center grid-cols-1 gap-6 sm:grid-cols-2 ">
+                <div class="grid items-center grid-cols-1 gap-6 sm:grid-cols-2 mt-5">
+                  <div class="mb-3 text-end">
+                    <h1 class="text-[#043420] text-2xl font-bold pr-6" id="regency">Kabupaten</h1>
+                    <h1 class="text-[#FA2D00] text-2xl font-bold pr-6" id="TouristAttraction">Nama tempat wisata</h1>
+                    <h1 class="text-[#043420] text-2xl font-bold pr-6" id="province">Nama Profinsi</h1>
+                  </div>
+                  <p class="pl-6 mb-3 text-lg font-semibold border-l-4 border-black border-dotted">
+                    Deliver great service experiences fast - without the complexity of
+                    traditional ITSM solutions.Accelerate critical development work,
+                    eliminate toil, and deploy changes with ease, with a complete audit
+                    trail for every change.
+                  </p>
+                </div>
+              </div>
+        </div>
+
+        <div class="slider-single">
+          <img
+            class="slider-single-image relative left-0 top-0 w-[50%] mx-auto h-auto shadow-lg transition-transform duration-[500ms] transform scale-0 opacity-0 rounded-3xl"
+            src="https://picsum.photos/id/975/200/300"
+            alt="3" />
+          <div class="slider-single-title mx-auto">
+                <div class="grid items-center grid-cols-1 gap-6 sm:grid-cols-2 mt-5">
                   <div class="mb-3 text-end">
                     <h1 class="text-[#043420] text-2xl font-bold pr-6" id="regency">Kabupaten</h1>
                     <h1 class="text-[#FA2D00] text-2xl font-bold pr-6" id="TouristAttraction">Nama tempat wisata</h1>
@@ -453,19 +475,30 @@ class Slider extends HTMLElement {
     };
 
     fetch(
-      "https://comptour-be.vercel.app/api/tourist-attractions/get-recommended",
+      "https://comptour-be.vercel.app/api/tourist-attractions/get-all",
       requestOptions
     )
       .then((response) => response.json())
       .then((data) => {
-        const images = data.recommendations.slice(0, 3).map((item) => item.image);
-        const names = data.recommendations.slice(0, 3).map((item) => item.name_place);
-        const descriptions = data.recommendations.slice(0, 3).map((item) => item.description);
+        const images = data.data.slice(0, 4).map((item) => item.image);
+        const names = data.data.slice(0, 4).map((item) => item.name_place);
+        const descriptions = data.data.slice(0, 4).map((item) => item.description);
+        const kabupaten = data.data.slice(0, 4).map((item) => item.regency);
+        const provinsi = data.data.slice(0, 4).map((item) => item.province);
 
         const imgElements = this.shadowRoot.querySelectorAll("img");
-        const nameElements =
-          this.shadowRoot.querySelectorAll("#TouristAttraction");
+        const nameElements = this.shadowRoot.querySelectorAll("#TouristAttraction");
         const descriptionElements = this.shadowRoot.querySelectorAll("p");
+        const nameKabupaten = this.shadowRoot.querySelectorAll("#regency");
+        const nameProvinsi = this.shadowRoot.querySelectorAll("#province");
+
+        nameProvinsi.forEach((name, index) => {
+          name.textContent = provinsi[index];
+        })
+
+        nameKabupaten.forEach((name, index) => {
+          name.textContent = kabupaten[index];
+        });
 
         imgElements.forEach((img, index) => {
           img.src = images[index];

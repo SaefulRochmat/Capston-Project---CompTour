@@ -6,7 +6,6 @@ class contentLanding extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    this.fetchData();
   }
 
   render() {
@@ -22,26 +21,26 @@ class contentLanding extends HTMLElement {
             <div class="grid grid-cols-3 md:grid-cols-3 gap-4 mx-20">
                 <div class="grid gap-4">
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" src="../../assets/image/prambanan.jpg" alt="">
+                        <img class="h-auto max-w-full rounded-lg" src="../assets/image/prambanan.jpg" alt="">
                     </div>
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" src="../../assets/image/gudeg.jpg" alt="">
-                    </div>
-                </div>
-                <div class="grid gap-4">
-                    <div>
-                        <img class="h-auto max-w-full rounded-lg" src="../../assets/image/tarian.jpg" alt="">
-                    </div>
-                    <div>
-                        <img class="h-auto max-w-full rounded-lg" src="../../assets/image/wayang kulit.jpg" alt="">
+                        <img class="h-auto max-w-full rounded-lg" src="../assets/image/gudeg.jpg" alt="">
                     </div>
                 </div>
                 <div class="grid gap-4">
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" src="../../assets/image/prambanan.jpg" alt="">
+                        <img class="h-auto max-w-full rounded-lg" src="../assets/image/tarian.jpg" alt="">
                     </div>
                     <div>
-                        <img class="h-auto max-w-full rounded-lg" src="../../assets/image/gudeg.jpg" alt="">
+                        <img class="h-auto max-w-full rounded-lg" src="../assets/image/wayang kulit.jpg" alt="">
+                    </div>
+                </div>
+                <div class="grid gap-4">
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg" src="../assets/image/prambanan.jpg" alt="">
+                    </div>
+                    <div>
+                        <img class="h-auto max-w-full rounded-lg" src="../assets/image/gudeg.jpg" alt="">
                     </div>
                 </div>
             </div>

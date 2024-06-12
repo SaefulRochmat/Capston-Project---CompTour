@@ -13,8 +13,8 @@ fetch("https://comptour-be.vercel.app/api/blogs/get-all", requestOptions)
         searchInput.addEventListener("input", () => {
             const searchTerm = searchInput.value.trim().toLowerCase();
             const filteredAttractions = attractions.filter((attraction) => {
-                const title = attraction.title.toLowerCase();
-                return title.includes(searchTerm);
+            const title = attraction.title.toLowerCase();
+            return title.includes(searchTerm);
             });
             renderTouristAttractions(filteredAttractions);
         });
@@ -45,3 +45,5 @@ const renderTouristAttractions = (attractions) => {
         touristAttractionsContainer.appendChild(attractionItemContainer);
     });
 }
+
+

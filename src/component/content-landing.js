@@ -47,7 +47,7 @@ class contentLanding extends HTMLElement {
               trail for every change.
               </p>
               <a
-                href="#"
+                href="/src/page/detail-search.html"
                 class=" my-4 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
                   ">
                 Explore Now!
@@ -78,7 +78,7 @@ class contentLanding extends HTMLElement {
               trail for every change.
               </p>
               <a
-                href="#"
+                href="/src/page/detail-search.html"
                 class=" my-4 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
                   ">
                 Explore Now!
@@ -96,7 +96,7 @@ class contentLanding extends HTMLElement {
               trail for every change.
               </p>
               <a
-                href="#"
+                href="/src/page/detail-search.html"
                 class=" my-4 inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
                   ">
                 Explore Now!
@@ -106,7 +106,7 @@ class contentLanding extends HTMLElement {
               <img
                 src="../assets/image/gambar-pemandangan-indonesia.jpg"
                 alt=""
-                class="w-full h-auto object-cover  rounded-r-[1.875rem]" />
+                class="w-full h-full object-cover  rounded-r-[1.875rem]" />
             </div>
           </div>
       `;
@@ -125,9 +125,7 @@ class contentLanding extends HTMLElement {
       .then((data) => {
         const images = data.data.slice(0, 4).map((item) => item.image);
         const names = data.data.slice(0, 4).map((item) => item.name_place);
-        const descriptions = data.data
-          .slice(0, 4)
-          .map((item) => item.description);
+        const descriptions = data.data.slice(0, 4).map((item) => item.description);
 
         const imgElements = this.shadowRoot.querySelectorAll("img");
         const nameElements = this.shadowRoot.querySelectorAll("h2");

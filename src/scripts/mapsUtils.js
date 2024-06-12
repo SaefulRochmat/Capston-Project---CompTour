@@ -1,9 +1,11 @@
-const raw = "";
 const requestOptions = {
     method: "POST",
-    body: raw,
-    redirect: "follow"
+    redirect: "follow",
+    headers: {
+        'Content-Type': 'application/json'
+    }
 };
+
 // Create a map object
 const map = L.map('map').setView([-7.0693167, 108.7860433], 6);
 
@@ -48,6 +50,27 @@ fetch('https://comptour-be.vercel.app/api/tourist-attractions/get-all', requestO
                     </div>
                 </div>
                 `;
+                fetch(`https://comptour-be.vercel.app/api/tourist-attractions/get-detail?taid=${attraction.taid}`, requestOptions)
+                .then((response) => response.json())
+                .then((data) => {
+                    const province = data.data.province;
+                    const description = data.data.description;
+                    const cultures = data.data.Cultures;
+
+                    // Menampilkan province di id="namaProvinsi"
+                    document.getElementById("namaProvinsi").innerHTML = province;
+
+                    // Menampilkan description di id="detailDeskripsi"
+                    document.getElementById("detailDeskripsi").innerHTML = description;
+
+                    // Menampilkan gambar di id="gambarWisata" sebanyak 6 buah
+                    for (let i = 0; i < 6; i++) {
+                    const img = document.getElementById(`gambarWisata${i+1}`);
+                    img.src = cultures[i].image; // asumsi bahwa cultures memiliki properti image
+                    }
+
+                })
+                .catch((error) => console.error(error));
             });
         }
     });
